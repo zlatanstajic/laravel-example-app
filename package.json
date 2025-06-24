@@ -1,9 +1,21 @@
 {
+    "name": "laravel-example-app",
+    "version": "1.0.0",
+    "description": "A modern Laravel 12 example application with Vite, Tailwind CSS, and API-ready setup.",
     "private": true,
     "type": "module",
+    "author": "Zlatan Stajic <contact@zlatanstajic.com>",
+    "license": "proprietary",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/90zlaya/laravel-example-app"
+    },
     "scripts": {
+        "dev": "vite",
         "build": "vite build",
-        "dev": "vite"
+        "preview": "vite preview",
+        "lint": "echo \"No linter configured\"",
+        "format": "echo \"No formatter configured\""
     },
     "devDependencies": {
         "@tailwindcss/vite": "^4.0.0",

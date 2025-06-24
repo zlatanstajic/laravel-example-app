@@ -1,0 +1,252 @@
+{
+	"info": {
+		"_postman_id": "a353ea3d-4b2f-47bb-b98f-3aeb5079b27c",
+		"name": "laravel-example-app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2884864"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "me as user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/users/me",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "tokens",
+			"item": [
+				{
+					"name": "create token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Parse the response JSON",
+									"var jsonData = pm.response.json();",
+									"",
+									"// Check if the token exists",
+									"if (jsonData.token) {",
+									"    pm.environment.set(\"ACCESS_TOKEN\", jsonData.token);",
+									"    console.log(\"ACCESS_TOKEN set:\", jsonData.token);",
+									"} else {",
+									"    console.log(\"Token not found in response\");",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"contact@zlatanstajic.com\",\n    \"password\": \"zlatanstajic!12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/tokens/create",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"tokens",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "todos",
+			"item": [
+				{
+					"name": "all todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/todos",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"todos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create todo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Buy groceries\",\n  \"description\": \"Milk, Bread, Eggs\",\n  \"completed\": false\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/todos",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"todos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "single todo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/todos/3",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"todos",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete single todo",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/todos/2",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"todos",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update single todo",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Buy more groceries\",\n  \"completed\": true\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/todos/3",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"todos",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "simple request",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{ACCESS_TOKEN}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
