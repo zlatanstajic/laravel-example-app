@@ -5,25 +5,28 @@ namespace App\Http\Controllers;
 use App\Enums\HttpStatusCode;
 use App\Http\Resources\TodoResource;
 use App\Services\TodoService;
+use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
+/**
+ * Todo Controller
+ *
+ * @package App\Http\Controllers
+ */
 class TodoController extends BaseController
 {
     /**
-     * @var TodoService
-     */
-    protected $todoService;
-
-    /**
      * @param TodoService $todoService
      */
-    public function __construct(TodoService $todoService)
+    public function __construct(readonly TodoService $todoService)
     {
-        $this->todoService = $todoService;
+        //
     }
 
     /**
+     * Get all todos.
+     *
      * @return JsonResponse
      */
     public function index(): JsonResponse
@@ -34,6 +37,8 @@ class TodoController extends BaseController
     }
 
     /**
+     * Get a specific todo by ID.
+     *
      * @param int $id
      *
      * @return JsonResponse
@@ -46,6 +51,8 @@ class TodoController extends BaseController
     }
 
     /**
+     * Create a new todo.
+     *
      * @param Request $request
      *
      * @return JsonResponse
@@ -64,7 +71,7 @@ class TodoController extends BaseController
                 '',
                 HttpStatusCode::CREATED->value
             );
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return $this->sendErrorResponse(
                 $e->getMessage(),
                 HttpStatusCode::INTERNAL_SERVER_ERROR->value
@@ -73,6 +80,8 @@ class TodoController extends BaseController
     }
 
     /**
+     * Update an existing todo.
+     *
      * @param Request $request
      * @param int $id
      *
@@ -90,7 +99,7 @@ class TodoController extends BaseController
             return $this->sendSuccessResponse(
                 new TodoResource($this->todoService->updateTodo($id, $data))
             );
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return $this->sendErrorResponse(
                 $e->getMessage(),
                 HttpStatusCode::INTERNAL_SERVER_ERROR->value
@@ -99,6 +108,8 @@ class TodoController extends BaseController
     }
 
     /**
+     * Delete a todo.
+     *
      * @param int $id
      *
      * @return JsonResponse
@@ -108,7 +119,7 @@ class TodoController extends BaseController
         try {
             $this->todoService->deleteTodo($id);
             return $this->sendSuccessResponse();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return $this->sendErrorResponse(
                 $e->getMessage(),
                 HttpStatusCode::INTERNAL_SERVER_ERROR->value

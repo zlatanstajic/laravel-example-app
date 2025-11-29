@@ -2,6 +2,11 @@
 
 namespace App\Enums;
 
+/**
+ * HttpStatusCode enum representing HTTP status codes.
+ *
+ * @package App\Enums
+ */
 enum HttpStatusCode: int
 {
     /**
@@ -18,7 +23,6 @@ enum HttpStatusCode: int
      * No Content - Request succeeded, no response body
      */
     case NO_CONTENT = 204;
-
 
     /**
      * Bad Request - Invalid input or validation failed
@@ -49,7 +53,6 @@ enum HttpStatusCode: int
      * Unprocessable Entity - Validation failed, semantically incorrect
      */
     case UNPROCESSABLE_ENTITY = 422;
-
 
     /**
      * Internal Server Error - Generic server failure

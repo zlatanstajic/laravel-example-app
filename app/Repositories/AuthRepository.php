@@ -5,9 +5,16 @@ namespace App\Repositories;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
+/**
+ * Authentication Repository
+ *
+ * @package App\Repositories
+ */
 class AuthRepository
 {
     /**
+     * Find user by email.
+     *
      * @param string $email
      *
      * @return User|null
@@ -18,6 +25,8 @@ class AuthRepository
     }
 
     /**
+     * Verify user password.
+     *
      * @param User $user
      * @param string $password
      *

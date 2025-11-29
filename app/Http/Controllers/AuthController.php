@@ -6,22 +6,24 @@ use App\Services\AuthService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
+/**
+ * Authentication Controller
+ *
+ * @package App\Http\Controllers
+ */
 class AuthController extends Controller
 {
     /**
-     * @var AuthService
-     */
-    protected AuthService $authService;
-
-    /**
      * @param AuthService $authService
      */
-    public function __construct(AuthService $authService)
+    public function __construct(readonly AuthService $authService)
     {
-        $this->authService = $authService;
+        //
     }
 
     /**
+     * Create authentication token.
+     *
      * @param Request $request
      *
      * @return JsonResponse

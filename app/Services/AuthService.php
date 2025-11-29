@@ -5,22 +5,24 @@ namespace App\Services;
 use App\Repositories\AuthRepository;
 use Illuminate\Http\JsonResponse;
 
+/**
+ * AuthService handles user authentication logic.
+ *
+ * @package App\Services
+ */
 class AuthService
 {
     /**
-     * @var AuthRepository
-     */
-    protected AuthRepository $authRepository;
-
-    /**
      * @param AuthRepository $authRepository
      */
-    public function __construct(AuthRepository $authRepository)
+    public function __construct(readonly AuthRepository $authRepository)
     {
-        $this->authRepository = $authRepository;
+        //
     }
 
     /**
+     * Authenticate user.
+     *
      * @param array $credentials
      *
      * @return JsonResponse

@@ -6,6 +6,11 @@ use App\Models\Todo;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+/**
+ * Todo Resource
+ *
+ * @package App\Http\Resources
+ */
 class TodoResource extends JsonResource
 {
     /**
@@ -39,7 +44,7 @@ class TodoResource extends JsonResource
     public ?string $updated_at;
 
     /**
-     * Transform the resource into an array
+     * Transform the resource into an array.
      *
      * @param  Request  $request
      *
@@ -67,4 +72,3 @@ class TodoResource extends JsonResource
         ];
     }
 }
-

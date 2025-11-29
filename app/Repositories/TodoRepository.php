@@ -5,9 +5,16 @@ namespace App\Repositories;
 use App\Models\Todo;
 use Illuminate\Database\Eloquent\Collection;
 
+/**
+ * Todo Repository
+ *
+ * @package App\Repositories
+ */
 class TodoRepository
 {
     /**
+     * Get all todos.
+     *
      * @return Collection
      */
     public function getAll(): Collection
@@ -16,6 +23,8 @@ class TodoRepository
     }
 
     /**
+     * Find todo by ID.
+     *
      * @param int $id
      *
      * @return Todo
@@ -26,6 +35,8 @@ class TodoRepository
     }
 
     /**
+     * Create a new todo.
+     *
      * @param array $data
      *
      * @return Todo
@@ -36,6 +47,8 @@ class TodoRepository
     }
 
     /**
+     * Update a todo.
+     *
      * @param int $id
      * @param array $data
      *
@@ -50,6 +63,8 @@ class TodoRepository
     }
 
     /**
+     * Delete a todo.
+     *
      * @param int $id
      *
      * @return int

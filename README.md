@@ -1,6 +1,6 @@
-# Laravel Example App
+# Todo API
 
-> This example app is a simple Todo application demonstrating common patterns such as resource controllers, service/repository layers, API resources, and authentication.
+> This API is a simple Todo application demonstrating common patterns such as resource controllers, service/repository layers, API resources, and authentication.
 
 ## Table of Contents
 
@@ -11,7 +11,7 @@
 * [Getting Started](#getting-started)
 * [Usage](#usage)
 * [Postman Collection](#postman-collection)
-    * [Usage of Collection](#usage-of-collection)
+* [API Documentation](#api-documentation)
 * [Testing](#testing)
 * [Contributing](#contributing)
 * [License](#license)
@@ -68,7 +68,7 @@ All endpoints require authentication via Sanctum.
 
     ```bash
     git clone <repository-url>
-    cd laravel-example-app
+    cd todo-api
     ```
 
 - **Install Node.js dependencies**
@@ -103,6 +103,18 @@ All endpoints require authentication via Sanctum.
 
     ```bash
     php artisan migrate
+    ```
+
+- **Create initial user (optional, local development)**
+
+    If you want to create the initial user from `InitialUserSeeder`, run:
+
+    ```bash
+    # Run the specific seeder
+    php artisan db:seed --class=InitialUserSeeder
+
+    # Or run all seeders (if `InitialUserSeeder` is registered in DatabaseSeeder)
+    php artisan db:seed
     ```
 
 - **(Optional) Set up pre-commit hook**
@@ -150,22 +162,33 @@ All endpoints require authentication via Sanctum.
 A ready-to-use Postman collection and environment are provided in the `.extras/postman` folder to help you quickly test the API endpoints.
 
 - **Collection:**  
-  [`laravel-example-app.postman_collection.json`](.extras/postman/laravel-example-app.postman_collection.json)  
+  [`todo-api.postman_collection.json`](.extras/postman/todo-api.postman_collection.json)  
   Contains requests for authentication, user info, and all Todo API operations (list, create, update, delete).
 
 - **Environment:**  
-  [`laravel-example-app - development.postman_environment.json`](.extras/postman/laravel-example-app%20-%20development.postman_environment.json)  
+  [`todo-api-development.postman_environment.json`](.extras/postman/todo-api-development.postman_environment.json)  
   Pre-configured with the base API URL and a placeholder for your access token.
-
-### Usage of Collection
-
-1. Import both files into Postman.
-2. Set the `ACCESS_TOKEN` variable in the environment after authenticating.
-3. Use the collection to interact with the API endpoints.
 
 [⬆ back to top](#table-of-contents)
 
 ---
+
+## API Documentation
+
+This project includes `dedoc/scramble` (a dev dependency) to generate OpenAPI-compatible API documentation automatically from the application code.
+
+- **Routes added by Scramble:**
+    - `/docs/api` — interactive UI viewer for the documentation
+    - `/docs/api.json` — the OpenAPI JSON document describing the API
+
+- **Notes:**
+    - By default Scramble exposes these routes only in the `local` environment. To make them available in other environments, configure the `viewApiDocs` gate as documented at https://scramble.dedoc.co/usage/getting-started#docs-authorization.
+    - The JSON document is available at `http://<your-app>/docs/api.json` and can be used with tools that accept OpenAPI/Swagger JSON.
+
+[⬆ back to top](#table-of-contents)
+
+---
+
 
 ## Testing
 

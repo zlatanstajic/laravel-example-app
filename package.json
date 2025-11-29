@@ -1,14 +1,14 @@
 {
-    "name": "laravel-example-app",
+    "name": "todo-api",
     "version": "1.0.0",
-    "description": "A modern Laravel 12 example application with Vite, Tailwind CSS, and API-ready setup.",
+    "description": "A simple Todo API built with Laravel 12.",
     "private": true,
     "type": "module",
     "author": "Zlatan Stajic <contact@zlatanstajic.com>",
     "license": "proprietary",
     "repository": {
         "type": "git",
-        "url": "https://github.com/90zlaya/laravel-example-app"
+        "url": "https://github.com/zlatanstajic/todo-api"
     },
     "scripts": {
         "dev": "vite",

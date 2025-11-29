@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "a353ea3d-4b2f-47bb-b98f-3aeb5079b27c",
-		"name": "laravel-example-app",
+		"_postman_id": "3aeca4c0-65ef-4d73-b2a0-e4614e27e943",
+		"name": "todo-api",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "2884864"
+		"_exporter_id": "14763304"
 	},
 	"item": [
 		{
@@ -63,7 +63,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"contact@zlatanstajic.com\",\n    \"password\": \"zlatanstajic!12345\"\n}",
+							"raw": "{\n    \"email\": \"developer@example.com\",\n    \"password\": \"W2o1nm81n169oB97Xi8H3tp7\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -137,13 +137,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/todos/3",
+							"raw": "{{BASE_URL}}/todos/1",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
 								"todos",
-								"3"
+								"1"
 							]
 						}
 					},
@@ -234,7 +234,10 @@
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
-					""
+					"pm.request.headers.add({",
+					"    key: 'Accept',",
+					"    value: 'application/json'",
+					"});"
 				]
 			}
 		},

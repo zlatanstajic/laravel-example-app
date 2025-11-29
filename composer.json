@@ -1,10 +1,10 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "90zlaya/laravel-example-app",
+    "name": "zlatanstajic/todo-api",
     "type": "project",
-    "description": "A modern Laravel 12 example application with Vite, Tailwind CSS, and API-ready setup.",
+    "description": "A simple Todo API built with Laravel 12.",
     "keywords": ["laravel", "framework", "vite", "tailwindcss", "sanctum", "example"],
-    "license": "Proprietary",
+    "license": "MIT",
     "authors": [
         {
             "name": "Zlatan Stajic",
@@ -18,14 +18,16 @@
         "laravel/tinker": "^2.10.1"
     },
     "require-dev": {
+        "dedoc/scramble": "^0.13.5",
         "fakerphp/faker": "^1.23",
+        "larastan/larastan": "3.2.*",
         "laravel/pail": "^1.2.2",
         "laravel/pint": "^1.13",
         "laravel/sail": "^1.41",
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.6",
-        "nunomaduro/larastan": "^3.2",
-        "phpunit/phpunit": "^11.5.3"
+        "phpunit/phpunit": "^11.5.3",
+        "squizlabs/php_codesniffer": "^4.0"
     },
     "autoload": {
         "psr-4": {
@@ -64,6 +66,7 @@
             "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite"
         ],
         "check": [
+            "composer run phpcs",
             "composer run phpstan",
             "composer run phpunit"
         ],
@@ -72,9 +75,9 @@
             "php artisan cache:clear",
             "php artisan config:clear"
         ],
+        "phpcs": "vendor/bin/phpcs",
         "phpunit": "vendor/bin/phpunit --colors=always --testdox",
-        "phpstan": "vendor/bin/phpstan analyse",
-        "copy": "bash /var/www/html/open-source/shell-scripts/src/git-copy.sh $1 $2 $3"
+        "phpstan": "vendor/bin/phpstan analyse"
     },
     "extra": {
         "laravel": {

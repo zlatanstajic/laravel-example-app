@@ -7,22 +7,24 @@ use App\Repositories\TodoRepository;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
+/**
+ * TodoService handles business logic related to todos.
+ *
+ * @package App\Services
+ */
 class TodoService
 {
     /**
-     * @var TodoRepository
-     */
-    protected $todoRepository;
-
-    /**
      * @param TodoRepository $todoRepository
      */
-    public function __construct(TodoRepository $todoRepository)
+    public function __construct(readonly TodoRepository $todoRepository)
     {
-        $this->todoRepository = $todoRepository;
+        //
     }
 
     /**
+     * Get all todos.
+     *
      * @return Collection
      */
     public function getAllTodos()
@@ -31,6 +33,8 @@ class TodoService
     }
 
     /**
+     * Get todo by ID.
+     *
      * @param int $id
      *
      * @return Todo
@@ -43,6 +47,8 @@ class TodoService
     }
 
     /**
+     * Create a new todo.
+     *
      * @param array $data
      *
      * @return Todo
@@ -53,6 +59,8 @@ class TodoService
     }
 
     /**
+     * Update a todo.
+     *
      * @param int $id
      * @param array $data
      *
@@ -66,6 +74,8 @@ class TodoService
     }
 
     /**
+     * Delete a todo.
+     *
      * @param int $id
      *
      * @return bool

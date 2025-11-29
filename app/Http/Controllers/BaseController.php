@@ -5,10 +5,15 @@ namespace App\Http\Controllers;
 use App\Enums\HttpStatusCode;
 use Illuminate\Http\JsonResponse;
 
+/**
+ * Base Controller
+ *
+ * @package App\Http\Controllers
+ */
 class BaseController extends Controller
 {
     /**
-     * Send a success response
+     * Send a success response.
      *
      * @param mixed $data
      * @param string $message
@@ -31,7 +36,7 @@ class BaseController extends Controller
     }
 
     /**
-     * Send an error response
+     * Send an error response.
      *
      * @param string $message
      * @param int    $code
